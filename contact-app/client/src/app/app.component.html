@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
+  <!--<div fxLayout="row"  fxFlex.lt="30%" fxHide.gt-md="5%"flex-order="1"></div>-->
+  <div fxLayout="row" fxLayoutAlign="center center" >
+    <app-contact-list [contacts]="contacts"></app-contact-list>
+  </div>
+  <!--<div fxLayout="row"  fxFlex.lt="30%" fxHide.gt-md="5%" flex-order="2"></div>-->
+  <a md-fab routerLink="."><md-icon>add</md-icon></a>
+</md-sidenav-container>
