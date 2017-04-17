@@ -1,0 +1,14 @@
+<div style="background-color: hotpink; color: white; text-align: center; height: 50px;"><br><md-icon></md-icon></div>
+<md-card>
+  <md-card-header class="md-headline">  <h3>{{contact.firstName}} {{contact.lastName}}</h3></md-card-header>
+<md-card-content>
+  <br> {{contact.address}} {{contact.city}}
+  <br>{{contact.phoneNumber}}
+  <br>
+</md-card-content>
+  <md-card-actions>
+  <a md-button (click)="onEdit(contact)"><md-icon>edit</md-icon></a>
+  <a md-button (click)="onDelete(contact)"><md-icon>delete</md-icon></a>
+  <div style="float: right"><a md-button (click)="onMap(contact)"><md-icon>room</md-icon></a></div>
+  </md-card-actions>
+</md-card><br>

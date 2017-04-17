@@ -1,0 +1,29 @@
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <md-card-title>Contact info</md-card-title>
+    <md-card-content>
+    <md-input-container>
+      <label>Firstname</label>
+      <input mdInput type="text" id="firstnameInput" required [(ngModel)]="contact.firstName">
+    </md-input-container><br>
+    <md-input-container>
+      <label>Lastname</label>
+      <input mdInput type="text" id="lastnameInput" required [(ngModel)]="contact.lastName">
+    </md-input-container><br>
+    <md-input-container>
+      <label>Address</label>
+      <input mdInput type="text" id="addressInput" required [(ngModel)]="contact.address">
+    </md-input-container><br>
+    <md-input-container>
+      <label>City</label>
+      <input mdInput type="text" id="cityInput" required [(ngModel)]="contact.city">
+    </md-input-container><br>
+    <md-input-container>
+      <label>Phonenumber</label>
+      <input mdInput type="text" id="phonenumberInput" required [(ngModel)]="contact.phoneNumber">
+    </md-input-container><br>
+    </md-card-content>
+    <md-card-actions>
+    <button (click)="close()">OK</button>
+    <button (click)="cancel()">CANCEL</button>
+    </md-card-actions>
+  </div>

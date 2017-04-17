@@ -1,8 +1,15 @@
 <md-sidenav-container>
   <!--<div fxLayout="row"  fxFlex.lt="30%" fxHide.gt-md="5%"flex-order="1"></div>-->
-  <div fxLayout="row" fxLayoutAlign="center center" >
-    <app-contact-list [contacts]="contacts"></app-contact-list>
+  <md-card>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <app-contact-list
+      [contacts]="contacts"
+      (editContact)="contactEdit($event)"
+      (removeContact)="contactRemove($event)"
+      (showContactOnMap)="contactShowOnMap($event)"
+    ></app-contact-list>
   </div>
   <!--<div fxLayout="row"  fxFlex.lt="30%" fxHide.gt-md="5%" flex-order="2"></div>-->
-  <a md-fab routerLink="."><md-icon>add</md-icon></a>
+  <md-card-title-group>  <a md-fab routerLink="." (click)="addContact()"><md-icon>add</md-icon></a></md-card-title-group>
+  </md-card>
 </md-sidenav-container>
