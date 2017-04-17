@@ -23,7 +23,11 @@
     </md-input-container><br>
     </md-card-content>
     <md-card-actions>
-    <button (click)="close()">OK</button>
-    <button (click)="cancel()">CANCEL</button>
+    <button md-mini-fab (click)="saveContact()"  style="background-color: palegreen">
+      <md-icon class="md-18">check</md-icon>
+    </button>
+      <button md-mini-fab md-dialog-close style="background-color: palevioletred">
+        <md-icon class="md-18">clear</md-icon>
+      </button>
     </md-card-actions>
   </div>

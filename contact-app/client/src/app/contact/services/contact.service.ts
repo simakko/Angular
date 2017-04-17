@@ -14,8 +14,8 @@ export class ContactService {
     }
 
     this.contacts = [
-      new Contact(0, 'Irmeli', 'Härkönen', '0502345678', 'Tie 5', 'Kaupunki'),
-      new Contact(1, 'Pekka', 'Härkönen', '0502345678', 'Tie 5', 'Kaupunki')
+      new Contact(0, 'Irmeli', 'Härkönen', '0502345678', 'Raastuvankatu', 'Lappeenranta'),
+      new Contact(1, 'Pekka', 'Härkönen', '0502345678', 'Kauppakatu', 'Imatra')
     ];
   }
 

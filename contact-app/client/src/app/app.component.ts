@@ -39,16 +39,11 @@ export class AppComponent {
 
   contactShowOnMap(contact: Contact) {
     let address: string = contact.address + "," + contact.city;
-    let httpUrl: string = "http://maps.google.com/maps/place/";
-    return this.dialogService.mapDialog(httpUrl + address.replace(" ", "") + "&output=embed")
+    let httpUrl: string = "http://www.google.com/maps?output=embed&q=";
+    return this.dialogService.mapDialog(httpUrl + address.replace(" ", ""));
   }
 
   addContact(){
     return this.dialogService.contactDialog();
   }
-
-  updateContacts() {
-    console.log("add");
-  }
-
 }
