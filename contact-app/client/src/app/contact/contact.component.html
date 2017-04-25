@@ -1,0 +1,17 @@
+<div>
+  <div fxLayout="column" fxLayoutAlign="center" fxFlex.gt-lg="30%" fxFlex="100" fxFlexOffset.gt-sm="35%"
+       fxFlexOffset.sm="20%">
+    <app-contact-list
+      [contacts]="contacts"
+      (editContact)="contactEdit($event)"
+      (removeContact)="contactRemove($event)"
+      (showContactOnMap)="contactShowOnMap($event)"
+    ></app-contact-list>
+    <md-card-title-group>
+      <a md-fab routerLink="." (click)="addContact()" color="primary">
+        <md-icon >add</md-icon>
+      </a>
+    </md-card-title-group>
+  </div>
+  <div fxLayout="column" fxFlex.gt-sm="35%" fxFlex.sm="20%" fxFlex="0"></div>
+</div>

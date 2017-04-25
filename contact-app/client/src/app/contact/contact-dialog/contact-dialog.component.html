@@ -1,33 +1,38 @@
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <md-card-title>Contact info</md-card-title>
-    <md-card-content>
-    <md-input-container>
-      <label>Firstname</label>
-      <input mdInput type="text" id="firstnameInput" required [(ngModel)]="contact.firstName">
-    </md-input-container><br>
-    <md-input-container>
-      <label>Lastname</label>
-      <input mdInput type="text" id="lastnameInput" required [(ngModel)]="contact.lastName">
-    </md-input-container><br>
-    <md-input-container>
-      <label>Address</label>
-      <input mdInput type="text" id="addressInput" required [(ngModel)]="contact.address">
-    </md-input-container><br>
-    <md-input-container>
-      <label>City</label>
-      <input mdInput type="text" id="cityInput" required [(ngModel)]="contact.city">
-    </md-input-container><br>
-    <md-input-container>
-      <label>Phonenumber</label>
-      <input mdInput type="text" id="phonenumberInput" required [(ngModel)]="contact.phoneNumber">
-    </md-input-container><br>
-    </md-card-content>
-    <md-card-actions>
-    <button md-mini-fab (click)="saveContact()"  style="background-color: palegreen">
+<md-card-title>{{title}}</md-card-title>
+<md-card-content>
+  <md-input-container>
+    <label>Firstname</label>
+    <input mdInput type="text" id="firstnameInput" required [(ngModel)]="contact.firstName">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>Lastname</label>
+    <input mdInput type="text" id="lastnameInput" required [(ngModel)]="contact.lastName">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>Address</label>
+    <input mdInput type="text" id="addressInput" required [(ngModel)]="contact.address">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>City</label>
+    <input mdInput type="text" id="cityInput" required [(ngModel)]="contact.city">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <label>Phonenumber</label>
+    <input mdInput type="text" id="phonenumberInput" required [(ngModel)]="contact.phoneNumber">
+  </md-input-container>
+  <br>
+</md-card-content>
+<md-card-actions>
+  <div id="buttons">
+    <button md-mini-fab color="primary" (click)="saveContact()">
       <md-icon class="md-18">check</md-icon>
     </button>
-      <button md-mini-fab md-dialog-close style="background-color: palevioletred">
-        <md-icon class="md-18">clear</md-icon>
-      </button>
-    </md-card-actions>
+    <button md-mini-fab color="accent" md-dialog-close>
+      <md-icon class="md-18">clear</md-icon>
+    </button>
   </div>
+</md-card-actions>

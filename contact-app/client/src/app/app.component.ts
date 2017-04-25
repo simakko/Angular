@@ -1,9 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Contact} from "./contact/contact";
-import {ContactService} from "./contact/services/contact.service";
-import {DialogService} from "./contact/services/dialog.service";
-import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.component";
-import {MdDialog} from "@angular/material";
+import {Component, HostListener, ViewChild} from '@angular/core';
+import {Router} from "@angular/router";
+import {MdSidenav} from "@angular/material";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -12,38 +10,18 @@ import {MdDialog} from "@angular/material";
 })
 export class AppComponent {
 
-  contacts: Contact[];
-  dialog;
- // @Output() edit: EventEmitter<Contact> = new EventEmitter();
- // @Output() editInDialog: EventEmitter<Contact> = new EventEmitter();
-  // @Output() remove: EventEmitter<Contact[]> = new EventEmitter();
+  sidenavMode: string;
 
-// asks contacts and transfers them
-  constructor(private contactService: ContactService, private dialogService: DialogService) { // Error
-    this.contacts = contactService.showContacts();
- //   this.dialog = dialogService.contactDialog();
+  constructor(private router: Router) {
+    this.onWindowResize(null);
   }
 
-  dialogShow(contact){
-    this.dialog = this.dialogService.contactDialog(contact);
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event) {
+    let width = event ? event.target.innerWidth : window.innerWidth;
+    this.sidenavMode = width >= 600 ? 'side' : 'over';
   }
 
-  contactEdit(contact: Contact) {
-    console.log("app");
-    return this.dialogShow(contact);
-  }
-
-  contactRemove(contact: Contact) {
-  return this.contactService.removeContact(contact);
-  }
-
-  contactShowOnMap(contact: Contact) {
-    let address: string = contact.address + "," + contact.city;
-    let httpUrl: string = "http://www.google.com/maps?output=embed&q=";
-    return this.dialogService.mapDialog(httpUrl + address.replace(" ", ""));
-  }
-
-  addContact(){
-    return this.dialogService.contactDialog();
+  OnInit(){
   }
 }

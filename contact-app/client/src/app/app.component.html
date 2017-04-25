@@ -1,15 +1,18 @@
-<md-sidenav-container>
-  <!--<div fxLayout="row"  fxFlex.lt="30%" fxHide.gt-md="5%"flex-order="1"></div>-->
-  <md-card>
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <app-contact-list
-      [contacts]="contacts"
-      (editContact)="contactEdit($event)"
-      (removeContact)="contactRemove($event)"
-      (showContactOnMap)="contactShowOnMap($event)"
-    ></app-contact-list>
+<md-sidenav-container class="ca-sidenav-container">
+  <md-sidenav class="ca-sidenav" #sidenav [mode]="sidenavMode" [opened]="sidenavMode=='side'">
+    <div id="sidenav-img"><img src="../assets/header.jpg"></div>
+    <div id="sidenavHeader">
+      <i class="material-icons" id="face-icon">tag_faces</i>
+      <h3>{{this.username}} Username</h3>
+      <h5>{{this.email}} user@gmail.com</h5>
+    </div>
+  </md-sidenav>
+  <md-toolbar class="mat-elevation-z5" color="primary">
+    <button md-fab (click)="sidenav.toggle()" color="primary">
+      <md-icon>menu</md-icon>
+    </button>
+  </md-toolbar>
+  <div class="ca-app-container">
+    <router-outlet></router-outlet>
   </div>
-  <!--<div fxLayout="row"  fxFlex.lt="30%" fxHide.gt-md="5%" flex-order="2"></div>-->
-  <md-card-title-group>  <a md-fab routerLink="." (click)="addContact()"><md-icon>add</md-icon></a></md-card-title-group>
-  </md-card>
 </md-sidenav-container>

@@ -1,0 +1,18 @@
+#buttons{
+  width: 100px;
+  height: 60px;
+
+  position: relative;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+}
+
+md-card-title{
+  font-family: "Gill Sans MT", "courier", "arial";
+}

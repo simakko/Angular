@@ -1,3 +1,20 @@
-.md-headline{
-  color: deeppink;
+md-card{
+  margin-bottom: 15px;
+  color: #283593;
 }
+
+md-card-actions{
+  padding: 10px;
+}
+
+#mapButton{
+  float: right;
+}
+
+#card-headerbox{
+  margin-top: 15px;
+  background-color: #3F51B5;
+  text-align: center;
+  height: 50px;
+}
+

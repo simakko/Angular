@@ -1,33 +1,33 @@
 import {Injectable} from '@angular/core';
 import {Contact} from "../contact";
+import {ContactApiService} from "./contact-api.service";
+import {ContactStorage} from "./contact-storage";
+import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs";
+import {ContactLocalstorageService} from "./contact-localstorage.service";
 
 @Injectable()
-export class ContactService {
+export class ContactService{
 
-  private contacts: Contact[];
-  private key: "localStorageKey";
+  contactStorage: ContactStorage;
 
-  constructor() {
-
-    if (!localStorage.getItem(this.key)) {
-      localStorage.setItem(this.key, JSON.stringify([]));
-    }
-
-    this.contacts = [
-      new Contact(0, 'Irmeli', 'Härkönen', '0502345678', 'Raastuvankatu', 'Lappeenranta'),
-      new Contact(1, 'Pekka', 'Härkönen', '0502345678', 'Kauppakatu', 'Imatra')
-    ];
+  constructor(private  contactApiService: ContactApiService, private contactLocalStorage: ContactLocalstorageService) {
+    this.contactStorage = environment.endpointUrl ? contactApiService : contactLocalStorage;
   }
 
-  public showContacts(): Contact[] {
-    return this.contacts;
+  public findAllContacts() {
+    return this.contactStorage.findContacts();
   }
 
-  public updateContacts(contacts: Contact[]) {
-    localStorage.setItem(this.key, JSON.stringify(contacts));
+  public editContact(contact: Contact){
+    return this.contactStorage.saveContacts(contact);
   }
 
   public removeContact(contact: Contact){
-    this.contacts.slice(contact.id, 1);
+    return this.contactStorage.removeContact(contact);
+  }
+
+  public addNewContact(contact: Contact){
+    return this.contactStorage.saveContacts(contact);
   }
 }

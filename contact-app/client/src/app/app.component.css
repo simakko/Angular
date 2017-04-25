@@ -1,0 +1,38 @@
+.ca-sidenav-container{
+  width: 100%;
+  height: 100%;
+}
+
+.ca-app-container{
+  min-width: 100%;
+  min-height: 100%;
+}
+
+md-sidenav{
+  width: 200px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  color: #283593;
+}
+
+ #sidenav-img{
+   position: absolute;
+   clip: rect(0px, 250px,64px,0px);
+   width: 100%;
+   margin: 0px;
+ }
+
+ #sidenavHeader{
+   position: absolute;
+   margin-top: 70px;
+   padding-left: 10px;
+ }
+
+#face-icon {
+font-size: 38px;
+}
+
+h3, h5{
+  margin: 2px;
+}

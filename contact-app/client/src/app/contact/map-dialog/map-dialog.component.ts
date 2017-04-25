@@ -10,9 +10,6 @@ export class MapDialogComponent implements OnInit {
 
   @Input() address : string;
 
-//  httpUrl: string = "http://maps.google.com/maps/place/";
- // htmlUrl: string = this.httpUrl + this.address + '&output=embed';
-
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
