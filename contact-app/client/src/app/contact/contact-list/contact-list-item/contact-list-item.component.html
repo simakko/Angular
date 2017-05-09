@@ -1,31 +1,28 @@
-<div id="card-headerbox" fxHide.xs="true">
+<div id="card-headerbox">
 </div>
 <md-card>
   <table>
-    <md-card-title style="color: #5c6bc0; margin-bottom: auto">{{contact.firstName}} {{contact.lastName}}
-      <div fxHide.gt-xs="true" fxFlexAlign="stretch"><a md-mini-fab color="primary" (click)="onEdit(contact)">
-        <md-icon>keyboard_arrow_down</md-icon>
-      </a></div>
+    <md-card-title>{{contact.firstName}} {{contact.lastName}}
     </md-card-title>
-    <div fxHide.xs="true">
+    <div>
       <md-card-content>
         <br>{{contact | contactAddress}}
         <br>{{contact.phoneNumber}}
-        <br>
+        <br>{{contact.id}}
       </md-card-content>
     </div>
   </table>
 
   <md-card-actions>
-    <div fxHide.xs="true">
-      <a md-mini-fab (click)="onEdit(contact)">
+    <div>
+      <a md-mini-fab vibration (click)="onEdit(contact)">
         <md-icon>edit</md-icon>
       </a>
-      <a md-mini-fab (click)="onDelete(contact)">
+      <a md-mini-fab vibration (click)="onDelete(contact)">
         <md-icon>delete</md-icon>
       </a>
       <div id="mapButton">
-        <a md-mini-fab (click)="onMap(contact)">
+        <a md-mini-fab vibration (click)="onMap(contact)">
           <md-icon>room</md-icon>
         </a>
       </div>

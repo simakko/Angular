@@ -1,3 +1,4 @@
+/*
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactDialogComponent } from './contact-dialog.component';
@@ -23,3 +24,4 @@ describe('ContactDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

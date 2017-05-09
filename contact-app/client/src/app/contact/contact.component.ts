@@ -28,7 +28,6 @@ export class ContactComponent implements OnInit {
   }
 
   contactEdit(contact: Contact) {
-    console.log(contact);
     return this.dialogService.contactDialog(contact).subscribe(contact => {
       if (contact) {
         this.contactService.editContact(contact).subscribe(edit => {

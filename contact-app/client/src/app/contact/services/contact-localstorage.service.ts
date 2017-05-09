@@ -45,8 +45,14 @@ export class ContactLocalstorageService implements ContactStorage{
 
   public removeContact(contact: Contact) {
     let contacts = this.readLocalStorage();
-    contacts.splice(contact.id, 1);
-    localStorage.setItem(this.key, JSON.stringify(contacts));
-    return Observable.of(contact);
+    let index = contacts.findIndex(id => contact.id == id.id);
+    let contactList = [];
+    for (let i = 0; i < contacts.length; i++) {
+      if (i != index) {
+        contactList.push(contacts[i]);
+      }
+    }
+    localStorage.setItem(this.key, JSON.stringify(contactList));
+    return Observable.of(contactList);
   }
 }

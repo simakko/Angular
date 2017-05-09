@@ -1,8 +1,33 @@
 import { ContactAddressPipe } from './contact-address.pipe';
+import {Contact} from "../contact";
 
 describe('ContactAddressPipe', () => {
-  it('create an instance', () => {
-    const pipe = new ContactAddressPipe();
-    expect(pipe).toBeTruthy();
+
+  const pipe = new ContactAddressPipe();
+
+  it ('should return empty', () =>{
+    let contact = new Contact(1, 'Firstname', 'Lasname', '0959873987', '', '')
+    expect(pipe.transform(contact)).toBe('');
+    expect(pipe.transform(null)).toBe('');
   });
+
+  it ('should return streetAddress', () =>{
+    let contact = new Contact(1, 'Firstname', 'Lasname', '0959873987', 'Street 1', '')
+    expect(pipe.transform(contact)).toBe(contact.address);
+    contact.city = null;
+    expect(pipe.transform(contact)).toBe(contact.address);
+  });
+
+  it ('should return city', () =>{
+    let contact = new Contact(1, 'Firstname', 'Lasname', '0959873987', '', 'City')
+    expect(pipe.transform(contact)).toBe(contact.city);
+    contact.address = null;
+    expect(pipe.transform(contact)).toBe(contact.city);
+  });
+
+  it ('should return streetAddress and city', () =>{
+    let contact = new Contact(1, 'Firstname', 'Lasname', '0959873987', 'Street 1', 'City')
+    expect(pipe.transform(contact)).toBe(contact.address+ ", " + contact.city);
+  });
+
 });

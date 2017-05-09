@@ -1,5 +1,5 @@
 import {Component, HostListener, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {MdSidenav} from "@angular/material";
 import * as _ from 'lodash';
 
@@ -11,6 +11,9 @@ import * as _ from 'lodash';
 export class AppComponent {
 
   sidenavMode: string;
+  toolbarDisabled: boolean;
+
+  @ViewChild('sidenav') sidenav: MdSidenav;
 
   constructor(private router: Router) {
     this.onWindowResize(null);
@@ -22,6 +25,23 @@ export class AppComponent {
     this.sidenavMode = width >= 600 ? 'side' : 'over';
   }
 
-  OnInit(){
+  ngOnInit(): void {
+    console.log(this.sidenav);
+    this.onWindowResize(null);
+    this.router.events
+      .subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          if (_.isEqual(event.urlAfterRedirects, '/') || _.isEqual(event.urlAfterRedirects, '/login')) {
+            this.toolbarDisabled = true;
+            return;
+          }
+          this.toolbarDisabled = false;
+        }
+      });
+  }
+
+  sidenavToggle(){
+    navigator.vibrate(100);
+    this.sidenav.toggle(!this.sidenav._isOpened);
   }
 }

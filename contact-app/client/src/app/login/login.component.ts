@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToListing() {
-    this.router.navigate(['contact']);
+    this.router.navigate(['/contact']);
   }
 
   buttonClick() {

@@ -1,25 +1,24 @@
 <div id="container">
   <md-card>
-  <md-card-header>
-    <div id="card-header"><h3>Login</h3></div>
-    <img md-card-image src="../../assets/header.jpg">
-  </md-card-header>
-    <md-card-content>
+    <div id="header">
+    <md-card-title id="card-header">
+      Login
+    </md-card-title>
+    </div>
+   <md-card-content>
       <md-input-container>
-        <label>Username</label>
-        <input mdInput type="text" required [(ngModel)]="username">
+        <input mdInput type="text" placeholder="Username" required [(ngModel)]="username">
       </md-input-container>
       <br>
       <md-input-container>
-        <label>Password</label>
-        <input mdInput type="text" type="password" required [(ngModel)]="password">
+        <input mdInput type="text" type="password" placeholder="Password" required [(ngModel)]="password">
       </md-input-container>
-      <br>
-    </md-card-content>
-    <md-card-actions>
-      <button md-fab (click)="buttonClick()" color="primary">
-        Sign in
-      </button>
-    </md-card-actions>
+       <br>
+         </md-card-content>
+        <md-card-actions>
+          <button vibration md-button (click)="buttonClick()">
+            Sign in
+          </button>
+        </md-card-actions>
   </md-card>
 </div>

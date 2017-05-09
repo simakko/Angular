@@ -7,6 +7,11 @@ md-card-actions{
   padding: 10px;
 }
 
+md-card-title{
+  color: #5c6bc0;
+  margin-bottom: auto;
+}
+
 #mapButton{
   float: right;
 }
@@ -18,3 +23,6 @@ md-card-actions{
   height: 50px;
 }
 
+a{
+  background-color: #3584EB;
+}

@@ -19,6 +19,8 @@ import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
 import {RouterModule} from "@angular/router";
 import {ContactApiService} from "./contact/services/contact-api.service";
 import {ContactLocalstorageService} from "./contact/services/contact-localstorage.service";
+import { VibrationDirective } from './contact/services/vibration.directive';
+import {DeviceService} from "./contact/services/device.service";
 
 const routes = [
   {
@@ -45,7 +47,8 @@ const routes = [
     ContactListItemComponent,
     ContactDialogComponent,
     MapDialogComponent,
-    ContactAddressPipe
+    ContactAddressPipe,
+    VibrationDirective
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,7 @@ const routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactService, DialogService, ContactApiService, ContactLocalstorageService],
+  providers: [ContactService, DialogService, ContactApiService, ContactLocalstorageService, DeviceService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [ContactDialogComponent, MapDialogComponent]

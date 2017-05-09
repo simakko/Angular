@@ -1,18 +1,21 @@
-<md-sidenav-container class="ca-sidenav-container">
-  <md-sidenav class="ca-sidenav" #sidenav [mode]="sidenavMode" [opened]="sidenavMode=='side'">
-    <div id="sidenav-img"><img src="../assets/header.jpg"></div>
+<md-sidenav-container class="container">
+  <md-sidenav *ngIf="!toolbarDisabled" class="ca-sidenav" name="sidenav" #sidenav [mode]="sidenavMode"
+              [opened]="sidenavMode=='side'">
+    <div><img id="sidenav-img" src="../assets/header.jpg"></div>
     <div id="sidenavHeader">
-      <i class="material-icons" id="face-icon">tag_faces</i>
-      <h3>{{this.username}} Username</h3>
-      <h5>{{this.email}} user@gmail.com</h5>
+      <md-grid-list cols="4" rowHeight="30px">
+        <h3>Username</h3>
+      </md-grid-list>
     </div>
   </md-sidenav>
-  <md-toolbar class="mat-elevation-z5" color="primary">
-    <button md-fab (click)="sidenav.toggle()" color="primary">
-      <md-icon>menu</md-icon>
-    </button>
-  </md-toolbar>
-  <div class="ca-app-container">
-    <router-outlet></router-outlet>
+  <div id="content">
+    <md-toolbar *ngIf="!toolbarDisabled" class="mat-elevation-z5" color="primary">
+      <button vibration md-fab (click)="sidenavToggle()" color="primary">
+        <md-icon>menu</md-icon>
+      </button>
+    </md-toolbar>
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </md-sidenav-container>
