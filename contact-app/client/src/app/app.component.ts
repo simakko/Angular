@@ -2,6 +2,7 @@ import {Component, HostListener, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {MdSidenav} from "@angular/material";
 import * as _ from 'lodash';
+import {User} from "./user/user";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class AppComponent {
 
   sidenavMode: string;
   toolbarDisabled: boolean;
+  isShadowClassVisible: boolean = false;
+  user: User = {id: 1, userName: "Local", password: "Password", email: "local@email.com"};
 
   @ViewChild('sidenav') sidenav: MdSidenav;
 
@@ -23,6 +26,12 @@ export class AppComponent {
   onWindowResize(event) {
     let width = event ? event.target.innerWidth : window.innerWidth;
     this.sidenavMode = width >= 600 ? 'side' : 'over';
+    if (this.sidenavMode == 'over'){
+      this.isShadowClassVisible = false;
+    }
+    else{
+      this.isShadowClassVisible = true;
+    }
   }
 
   ngOnInit(): void {

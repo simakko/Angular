@@ -1,14 +1,21 @@
 md-card{
-  margin-bottom: 15px;
-  color: #283593;
+  margin-bottom: 40px;
+  color: white;
+  padding: 0;
+  background: #4d7ae4;
 }
 
-md-card-actions{
-  padding: 10px;
+.ca-listItemButtons{
+  clear: both;
+  margin: 0;
+  padding: 0 5%;
+  width: 90%;
+  background-color: #ffffff;
 }
 
 md-card-title{
-  color: #5c6bc0;
+  margin-top: 20px;
+  color: #ffffff;
   margin-bottom: auto;
 }
 
@@ -16,13 +23,31 @@ md-card-title{
   float: right;
 }
 
-#card-headerbox{
-  margin-top: 15px;
-  background-color: #3F51B5;
-  text-align: center;
-  height: 50px;
+a{
+  color: #9E9E9E;
+  margin: 5px;
+  box-shadow: 0px 2px 1px lightgray;
+  background: rgb(255,255,255);
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 48%, rgba(226,226,226,1) 89%, rgba(226,226,226,1) 89%);
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 48%,rgba(226,226,226,1) 89%,rgba(226,226,226,1) 89%);
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 48%,rgba(226,226,226,1) 89%,rgba(226,226,226,1) 89%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e2e2',GradientType=0 );
+
 }
 
-a{
-  background-color: #3584EB;
+.ca-listItemText{
+  margin-left: 10px;
+  width: 60%;
+  float: left;
+}
+
+.ca-listItemContactIcon {
+  font-size: 100px;
+}
+
+.ca-contactIconDiv{
+float: right;
+}
+md-card-content{
+  color: gainsboro;
 }

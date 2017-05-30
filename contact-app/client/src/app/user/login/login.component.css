@@ -12,7 +12,7 @@
 }
 
 #header{
-  background-image: url("../../assets/header.jpg");
+  background-image: url("../../../assets/header.jpg");
   color: white;
   width: 200px;
   height: 80px;
@@ -51,4 +51,16 @@ md-card-content{
 
 button{
   background-color: white;
+}
+
+.alert{
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  padding: 5px 0px;
+  text-align: center;
+  color: white;
+  background-color: red;
+  font-size: x-small;
+  font-stretch: extra-expanded;
 }

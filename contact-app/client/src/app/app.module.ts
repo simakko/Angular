@@ -1,10 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, ConnectionBackend, RequestOptions, XHRBackend} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './user/login/login.component';
 import {ContactComponent} from './contact/contact.component';
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
 import {ContactListItemComponent} from './contact/contact-list/contact-list-item/contact-list-item.component';
@@ -19,8 +19,11 @@ import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
 import {RouterModule} from "@angular/router";
 import {ContactApiService} from "./contact/services/contact-api.service";
 import {ContactLocalstorageService} from "./contact/services/contact-localstorage.service";
-import { VibrationDirective } from './contact/services/vibration.directive';
+import {VibrationDirective} from './contact/services/vibration.directive';
 import {DeviceService} from "./contact/services/device.service";
+import {UserService} from "./user/services/user.service";
+import {AuthenticationService} from "./user/services/authentication.service";
+import {HTTPService} from "./user/services/http.service";
 
 const routes = [
   {
@@ -37,6 +40,10 @@ const routes = [
     component: LoginComponent
   }
 ];
+
+export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
+  return new HTTPService(backend, options);
+}
 
 @NgModule({
   declarations: [
@@ -61,7 +68,7 @@ const routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactService, DialogService, ContactApiService, ContactLocalstorageService, DeviceService],
+  providers: [ContactService, DialogService, ContactApiService, ContactLocalstorageService, DeviceService, UserService, AuthenticationService, {provide: HTTPService, useFactory: getHttp, deps:[XHRBackend, RequestOptions]}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [ContactDialogComponent, MapDialogComponent]

@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ContactsApp.Controllers.Authentication;
+using ContactsApp.Repository;
 using ContactsApp.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 
 namespace ContactsApp
 {
@@ -28,15 +35,31 @@ namespace ContactsApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IService, ContactService>();
+            //using Dependency Injection
+            services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddCors(o => o.AddPolicy("DevPolicy", builder =>
+            services.AddCors(o => o.AddPolicy("ContactsAppPolicy", builder =>
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
 
+            //Configure database
+            services.AddDbContext<DatabaseContext>(options =>
+             options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
+            });
+
             // Add framework services.
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +68,28 @@ namespace ContactsApp
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors("DevPolicy");
+            //creates or updates database in startup
+            var context = app.ApplicationServices.GetService<DatabaseContext>();
+            if (context.Database.EnsureCreated())
+                context.Database.Migrate();
+
+            app.UseCors("ContactsAppPolicy");
+
+            app.UseJwtBearerAuthentication(new JwtBearerOptions()
+            {
+
+                TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    IssuerSigningKey = TokenAuthOption.Key,
+                    ValidAudience = TokenAuthOption.Audience,
+                    ValidIssuer = TokenAuthOption.Issuer,
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(0)
+                }
+            });
 
             app.UseMvc();
         }

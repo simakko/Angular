@@ -13,9 +13,11 @@ html{
 #content{
   position: relative;
   height: 100vh;
+  overflow: hidden;
 }
 
 .router-container{
+  height: calc(100vh - 60px);
   overflow-y: auto;
 }
 
@@ -29,24 +31,55 @@ html{
   margin: 0;
   padding: 0;
   color: #283593;
+  overflow: visible;
 }
 
  #sidenav-img{
    background-image: url("../assets/header.jpg");
    position: absolute;
    width: 100%;
-   height: 64px;
+   height: 110px;
    margin: 0;
  }
 
- #sidenavHeader{
-   position: absolute;
-   margin-top: 70px;
-   padding-left: 10px;
+ .sidenavHeaderShadow{
+   box-shadow: 5px 5px 10px lightgray;
  }
 
+#sidenavHeader{
+  position: absolute;
+  margin-top: 64px;
+  height: 100%;
+  width: 200px;
+}
+
 h3{
-  margin: 2px;
-  float: left;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+p{
+  margin-top: 0;
+}
+
+.ca-sidenavUserImg{
+  background-image: url("../assets/face.jpg");
+  background-position: center;
+  background-size: 110px;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+}
+
+.userInfo{
+  width: 180px;
+  height: auto;
+  margin-top: -45px;
+  padding: 45px 10px 10px 10px;
+  background: -moz-linear-gradient(top,  rgba(63,81,181,0) 0%, rgba(63,81,181,1) 31%, rgba(63,81,181,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(63,81,181,0) 0%,rgba(63,81,181,1) 31%,rgba(63,81,181,1) 100%);
+  background: linear-gradient(to bottom,  rgba(63,81,181,0) 0%,rgba(63,81,181,1) 31%,rgba(63,81,181,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003f51b5', endColorstr='#3f51b5',GradientType=0 );
+  color: white;
 }
 

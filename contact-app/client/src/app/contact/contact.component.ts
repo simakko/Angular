@@ -52,7 +52,6 @@ export class ContactComponent implements OnInit {
 
   addContact() {
     return this.dialogService.contactDialog().subscribe(contact => {
-      console.log("subscribe");
       if (contact) {
         this.contactService.addNewContact(contact).subscribe(add => {
           this.reloadContacts();

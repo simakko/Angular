@@ -1,20 +1,18 @@
-<div id="card-headerbox">
-</div>
 <md-card>
-  <table>
+  <table class="ca-listItemText">
     <md-card-title>{{contact.firstName}} {{contact.lastName}}
     </md-card-title>
     <div>
       <md-card-content>
         <br>{{contact | contactAddress}}
         <br>{{contact.phoneNumber}}
-        <br>{{contact.id}}
       </md-card-content>
     </div>
   </table>
-
-  <md-card-actions>
-    <div>
+  <div class="ca-contactIconDiv">
+  <i class="material-icons ca-listItemContactIcon">&#xE851;</i>
+  </div>
+  <md-card-actions class="ca-listItemButtons">
       <a md-mini-fab vibration (click)="onEdit(contact)">
         <md-icon>edit</md-icon>
       </a>
@@ -26,7 +24,6 @@
           <md-icon>room</md-icon>
         </a>
       </div>
-    </div>
   </md-card-actions>
 
 </md-card>

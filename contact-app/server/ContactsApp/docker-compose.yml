@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  contactsapp:
+    image: contactsapp
+    build:
+      context: ./ContactsApp
+      dockerfile: Dockerfile

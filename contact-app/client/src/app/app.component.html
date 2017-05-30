@@ -1,11 +1,12 @@
 <md-sidenav-container class="container">
   <md-sidenav *ngIf="!toolbarDisabled" class="ca-sidenav" name="sidenav" #sidenav [mode]="sidenavMode"
               [opened]="sidenavMode=='side'">
-    <div><img id="sidenav-img" src="../assets/header.jpg"></div>
-    <div id="sidenavHeader">
-      <md-grid-list cols="4" rowHeight="30px">
-        <h3>Username</h3>
-      </md-grid-list>
+    <div id="sidenav-img"></div>
+    <div id="sidenavHeader" [ngClass]="{'sidenavHeaderShadow': isShadowClassVisible}">
+      <div class="userInfo">
+        <div class="ca-sidenavUserImg"></div>
+        <h3>{{user.userName}}</h3>
+      <p>{{user.email}}</p></div>
     </div>
   </md-sidenav>
   <div id="content">
