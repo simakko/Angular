@@ -53,4 +53,6 @@ export class AppComponent {
     navigator.vibrate(100);
     this.sidenav.toggle(!this.sidenav._isOpened);
   }
+
+
 }

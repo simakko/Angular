@@ -8,6 +8,7 @@
         <h3>{{user.userName}}</h3>
       <p>{{user.email}}</p></div>
     </div>
+    <button vibration (click)="sidenavToggle()" color="primary"></button>
   </md-sidenav>
   <div id="content">
     <md-toolbar *ngIf="!toolbarDisabled" class="mat-elevation-z5" color="primary">

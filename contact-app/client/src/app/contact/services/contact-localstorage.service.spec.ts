@@ -34,13 +34,12 @@ describe('ContactLocalstorageService', () => {
     ]
   }
 
-
-  it('should initialize storage', inject([ContactLocalstorageService], (service: ContactLocalstorageService) => {
+  it('Should initialize storage', inject([ContactLocalstorageService], (service: ContactLocalstorageService) => {
     let data = localStorage.getItem(localStorageKey);
     expect(JSON.parse(data)).toEqual([]); //Test if data is equal to a table
   }));
 
-  it('#findContacts Should find all contacts', inject([ContactLocalstorageService], (service: ContactLocalstorageService) => {
+  it('#findContacts should find all contacts', inject([ContactLocalstorageService], (service: ContactLocalstorageService) => {
     let contacts = contactArray();
     localStorage.setItem(localStorageKey, JSON.stringify(contacts));
     let contactIds = _.map(contacts, 'id');
@@ -50,5 +49,9 @@ describe('ContactLocalstorageService', () => {
         expect(contactIds).toContain(c.id);
       })
     });
+  }));
+
+  it('#', inject([ContactLocalstorageService], (service: ContactLocalstorageService) => {
+
   }));
 });
