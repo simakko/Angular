@@ -1,4 +1,4 @@
-# contacts-app
+# contact-app
 
 - Client - Angular 4 Web app
 - Server - C# .NET Core Web API (Visual Studio 2017)
