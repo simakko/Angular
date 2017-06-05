@@ -20,7 +20,7 @@ export class UserService {
         return this.http.put(this.url, null);
       }
       )._catch(error =>{
-        console.log("Täällä ollaan "+ error.status + " " + error.statusMessage);
+        console.log("Error occurred: "+ error.status + " " + error.statusMessage);
         return Observable.throw(error);
       });
     }

@@ -209,7 +209,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_services_http_service__ = __webpack_require__(55);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactApiService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -335,7 +335,7 @@ ContactLocalstorageService = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__contact_api_service__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact_localstorage_service__ = __webpack_require__(121);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -476,7 +476,7 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__http_service__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(38);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenticationService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -520,7 +520,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__authentication_service__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(140);
@@ -555,7 +555,7 @@ var UserService = (function () {
             return this.authentication.authenticate(username, password).flatMap(function () {
                 return _this.http.put(_this.url, null);
             })._catch(function (error) {
-                console.log("Täällä ollaan " + error.status + " " + error.statusMessage);
+                console.log("Error occurred: " + error.status + " " + error.statusMessage);
                 return __WEBPACK_IMPORTED_MODULE_4_rxjs__["Observable"].throw(error);
             });
         }
@@ -601,7 +601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(38);
 
 
 
@@ -1030,6 +1030,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__(38);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1040,6 +1041,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1058,14 +1060,19 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.signIn = function () {
         var _this = this;
-        this.userService.signIn(this.username, this.password).subscribe(function (data) {
-            console.log("data " + data.json());
-            _this.app.user = data.json();
-            _this.navigateToContactListing();
-        }, function (error) {
-            _this.signInButton = true;
-            _this.error = "Oh no, error occurred. Your screwed!";
-        });
+        if (__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].environmentName == 'local') {
+            this.navigateToContactListing();
+        }
+        else {
+            this.userService.signIn(this.username, this.password).subscribe(function (data) {
+                console.log("data " + data.json());
+                _this.app.user = data.json();
+                _this.navigateToContactListing();
+            }, function (error) {
+                _this.signInButton = true;
+                _this.error = "Oh no, error occurred. Your screwed!";
+            });
+        }
     };
     return LoginComponent;
 }());
@@ -1258,20 +1265,15 @@ module.exports = "<div id=\"container\">\n  <md-card>\n    <div id=\"header\">\n
 
 /***/ }),
 
-/***/ 39:
+/***/ 38:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
-// The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false,
-    environmentName: '',
-    endpointUrl: 'http://localhost:49537/api'
+    environmentName: 'local',
+    endpointUrl: ''
 };
 //# sourceMappingURL=environment.js.map
 

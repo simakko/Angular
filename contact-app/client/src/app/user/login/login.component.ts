@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import * as _ from 'lodash';
 import {UserService} from "../services/user.service";
-import {User} from "../user";
 import {AppComponent} from "../../app.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +17,7 @@ export class LoginComponent implements OnInit {
     signInButton: boolean = false;
 
   constructor(private router: Router, private userService: UserService, private app: AppComponent) {
+
   }
 
   ngOnInit() {
@@ -28,6 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(){
+    if(environment.environmentName == 'local'){
+      this.navigateToContactListing();
+    }else{
       this.userService.signIn(this.username, this.password).subscribe(data => {
         console.log("data " +data.json());
         this.app.user = data.json();
@@ -36,5 +39,5 @@ export class LoginComponent implements OnInit {
           this.signInButton = true;
           this.error = "Oh no, error occurred. Your screwed!";
         });
-  }
+  }}
 }
