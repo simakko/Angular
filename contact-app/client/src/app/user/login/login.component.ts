@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
     signInButton: boolean = false;
 
   constructor(private router: Router, private userService: UserService, private app: AppComponent) {
-
+    if(environment.environmentName == 'local'){
+      this.navigateToContactListing();
+    }
   }
 
   ngOnInit() {
@@ -28,9 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(){
-    if(environment.environmentName == 'local'){
-      this.navigateToContactListing();
-    }else{
       this.userService.signIn(this.username, this.password).subscribe(data => {
         console.log("data " +data.json());
         this.app.user = data.json();
@@ -39,5 +38,5 @@ export class LoginComponent implements OnInit {
           this.signInButton = true;
           this.error = "Oh no, error occurred. Your screwed!";
         });
-  }}
+  }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ContactService} from "./services/contact.service";
 import {DialogService} from "./services/dialog.service";
 import {Contact} from "./contact";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-contact',
@@ -18,8 +19,9 @@ export class ContactComponent implements OnInit {
   }
 
   reloadContacts() {
-    return this.contactService.findAllContacts().subscribe(contacts => { //subscribe sends the http-request
-      this.contacts = contacts;
+    return this.contactService.findAllContacts().subscribe(contact => { //subscribe sends the http-request
+      let sortedContacts = _.sortBy(contact, "lastName");
+      this.contacts = sortedContacts;
     });
   }
 

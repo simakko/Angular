@@ -10,7 +10,7 @@ export class MapDialogComponent implements OnInit {
 
   @Input() address : string;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(public sanitizer: DomSanitizer) {}
 
   ngOnInit() {
   }

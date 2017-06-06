@@ -1052,6 +1052,9 @@ var LoginComponent = (function () {
         this.userService = userService;
         this.app = app;
         this.signInButton = false;
+        if (__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].environmentName == 'local') {
+            this.navigateToContactListing();
+        }
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
@@ -1060,19 +1063,14 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.signIn = function () {
         var _this = this;
-        if (__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].environmentName == 'local') {
-            this.navigateToContactListing();
-        }
-        else {
-            this.userService.signIn(this.username, this.password).subscribe(function (data) {
-                console.log("data " + data.json());
-                _this.app.user = data.json();
-                _this.navigateToContactListing();
-            }, function (error) {
-                _this.signInButton = true;
-                _this.error = "Oh no, error occurred. Your screwed!";
-            });
-        }
+        this.userService.signIn(this.username, this.password).subscribe(function (data) {
+            console.log("data " + data.json());
+            _this.app.user = data.json();
+            _this.navigateToContactListing();
+        }, function (error) {
+            _this.signInButton = true;
+            _this.error = "Oh no, error occurred. Your screwed!";
+        });
     };
     return LoginComponent;
 }());
