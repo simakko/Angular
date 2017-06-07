@@ -38,7 +38,8 @@ export class ContactLocalstorageService implements ContactStorage{
 
   public editContact(contact:Contact){
     let contacts = this.readLocalStorage();
-    contacts[contact.id] = contact;
+    let index = contacts.findIndex(id => contact.id == id.id);
+    contacts[index] = contact;
     localStorage.setItem(this.key, JSON.stringify(contacts));
     return Observable.of(contact);
   }

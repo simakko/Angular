@@ -15,13 +15,13 @@ export class ContactComponent implements OnInit {
   dialog;
 
   constructor(private contactService: ContactService, private dialogService: DialogService) {
+    this.contacts = [];
     this.reloadContacts();
   }
 
   reloadContacts() {
-    return this.contactService.findAllContacts().subscribe(contact => { //subscribe sends the http-request
-      let sortedContacts = _.sortBy(contact, "lastName");
-      this.contacts = sortedContacts;
+    return this.contactService.findAllContacts().subscribe(contacts => { //subscribe sends the http-request
+      this.contacts = contacts;
     });
   }
 

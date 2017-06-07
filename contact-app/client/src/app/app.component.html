@@ -16,7 +16,7 @@
         <md-icon>menu</md-icon>
       </button>
     </md-toolbar>
-    <div class="router-container">
+    <div class="router-container" [ngClass]="{'horizontalScrollbar' : isHorizontalScrollbarVisible}">
       <router-outlet></router-outlet>
     </div>
   </div>

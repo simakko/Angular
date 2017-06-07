@@ -24,6 +24,8 @@ import {DeviceService} from "./contact/services/device.service";
 import {UserService} from "./user/services/user.service";
 import {AuthenticationService} from "./user/services/authentication.service";
 import {HTTPService} from "./user/services/http.service";
+import { ContactSortPipe } from './contact/pipes/contact-sort.pipe';
+import {NgPipesModule} from 'ngx-pipes';
 
 const routes = [
   {
@@ -55,7 +57,8 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     ContactDialogComponent,
     MapDialogComponent,
     ContactAddressPipe,
-    VibrationDirective
+    VibrationDirective,
+    ContactSortPipe
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     MdButtonModule,
     MdCheckboxModule,
     BrowserAnimationsModule,
+    NgPipesModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ContactService, DialogService, ContactApiService, ContactLocalstorageService, DeviceService, UserService, AuthenticationService, {provide: HTTPService, useFactory: getHttp, deps:[XHRBackend, RequestOptions]}],

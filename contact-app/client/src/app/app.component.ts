@@ -14,6 +14,7 @@ export class AppComponent {
   sidenavMode: string;
   toolbarDisabled: boolean;
   isShadowClassVisible: boolean = false;
+  isHorizontalScrollbarVisible: boolean = true;
   user: User = {id: 1, userName: "Local", password: "Password", email: "local@email.com"};
 
   @ViewChild('sidenav') sidenav: MdSidenav;
@@ -28,9 +29,11 @@ export class AppComponent {
     this.sidenavMode = width >= 600 ? 'side' : 'over';
     if (this.sidenavMode == 'over'){
       this.isShadowClassVisible = false;
+      this.isHorizontalScrollbarVisible = true;
     }
     else{
       this.isShadowClassVisible = true;
+      this.isHorizontalScrollbarVisible = false;
     }
   }
 

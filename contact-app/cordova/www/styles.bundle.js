@@ -1,6 +1,6 @@
 webpackJsonp([2,4],{
 
-/***/ 18:
+/***/ 19:
 /***/ (function(module, exports) {
 
 /*
@@ -57,16 +57,16 @@ module.exports = function() {
 
 /***/ }),
 
-/***/ 194:
+/***/ 271:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(274);
+var content = __webpack_require__(352);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(537)(content, {});
+var update = __webpack_require__(617)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -84,10 +84,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 273:
+/***/ 351:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(18)();
+exports = module.exports = __webpack_require__(19)();
 // imports
 
 
@@ -99,22 +99,22 @@ exports.push([module.i, ".mat-elevation-z0{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0
 
 /***/ }),
 
-/***/ 274:
+/***/ 352:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(18)();
+exports = module.exports = __webpack_require__(19)();
 // imports
-exports.i(__webpack_require__(273), "");
+exports.i(__webpack_require__(351), "");
 
 // module
-exports.push([module.i, "html, body{\n  width: 100vw;\n  margin: 0;\n  overflow: hidden;\n  color: #283593;\n}\n\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(" + __webpack_require__(539) + ") format('woff2');\n}\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n}\n", ""]);
+exports.push([module.i, "html, body{\n  width: 100vw;\n  margin: 0;\n  overflow: hidden;\n  color: #283593;\n}\n\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(" + __webpack_require__(619) + ") format('woff2');\n}\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 537:
+/***/ 617:
 /***/ (function(module, exports) {
 
 /*
@@ -367,20 +367,20 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 539:
+/***/ 619:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "material-icons.c77332f603c38a787040.woff2";
 
 /***/ }),
 
-/***/ 544:
+/***/ 624:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(194);
+module.exports = __webpack_require__(271);
 
 
 /***/ })
 
-},[544]);
+},[624]);
 //# sourceMappingURL=styles.bundle.js.map

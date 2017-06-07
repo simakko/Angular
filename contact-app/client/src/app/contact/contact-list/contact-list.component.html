@@ -1,4 +1,4 @@
-<div class="ca-listContainer" *ngFor="let contact of contacts" fxFlexAlign="center stretch">
+<div class="ca-listContainer" *ngFor="let contact of contacts | orderBy: ['lastName', 'firstName']" fxFlexAlign="center stretch">
   <app-contact-list-item
     [contact]="contact"
     [edit]="editContact"
