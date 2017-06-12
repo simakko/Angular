@@ -32,7 +32,7 @@ ng serve
 --> http://localhost:4200/
 
 Web API
-ng serve --environment=dev
+ng serve --environment=api
 
 Local Storage 
 ng serve --environment=local
