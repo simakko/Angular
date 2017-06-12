@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
 
   signIn(){
       this.userService.signIn(this.username, this.password).subscribe(data => {
-        console.log("data " +data.json());
         this.app.user = data.json();
         this.navigateToContactListing();
       }, error => {
