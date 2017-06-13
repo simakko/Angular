@@ -1,7 +1,5 @@
-.mapFrame{
-  border: none;
-}
-
-md-dialog-container{
-  padding: 0;
+iframe{
+  padding: 10px;
+  height: 60vh;
+  width: 70vw;
 }

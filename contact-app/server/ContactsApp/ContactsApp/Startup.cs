@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ContactsApp.Controllers.Authentication;
@@ -20,8 +21,12 @@ namespace ContactsApp
 {
     public class Startup
     {
+        private string _connectionString = "DatabaseConnection";
+
         public Startup(IHostingEnvironment env)
         {
+            LocalDataConnection();
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -48,7 +53,7 @@ namespace ContactsApp
 
             //Configure database
             services.AddDbContext<DatabaseContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
+             options.UseSqlServer(Configuration.GetConnectionString(_connectionString)));
 
             services.AddAuthorization(auth =>
             {
@@ -91,7 +96,13 @@ namespace ContactsApp
                 }
             });
 
-            app.UseMvc();
+           app.UseMvc();
+        }
+
+        [Conditional("DEBUG")]
+        private void LocalDataConnection()
+        {
+            _connectionString = "LocalConnection";
         }
     }
 }

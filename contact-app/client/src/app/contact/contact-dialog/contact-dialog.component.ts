@@ -11,19 +11,23 @@ import {MdDialog, MdDialogRef} from "@angular/material";
 export class ContactDialogComponent implements OnInit {
 
   @Input() contact: Contact;
-  title: string = "Edit contact";
+  title: string = "EDIT CONTACT";
 
   constructor(private dialog: MdDialogRef<ContactDialogComponent>) {
   }
 
   ngOnInit() {
     if(!this.contact){
-      this.title = "Add contact";
+      this.title = "ADD CONTACT";
       this.contact = new Contact();
     }
   }
 
   saveContact(){
-    this.dialog.close(this.contact);
+    if(!this.contact.firstName && !this.contact.lastName && !this.contact.address && !this.contact.city && !this.contact.phoneNumber){
+      this.dialog.close();
+    }else {
+      this.dialog.close(this.contact);
+    }
   }
 }

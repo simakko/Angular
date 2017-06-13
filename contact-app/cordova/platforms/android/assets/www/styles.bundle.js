@@ -107,7 +107,7 @@ exports = module.exports = __webpack_require__(19)();
 exports.i(__webpack_require__(351), "");
 
 // module
-exports.push([module.i, "html, body{\n  width: 100vw;\n  margin: 0;\n  overflow: hidden;\n  color: #283593;\n}\n\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(" + __webpack_require__(619) + ") format('woff2');\n}\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n}\n", ""]);
+exports.push([module.i, "html, body{\n  width: 100vw;\n  margin: 0;\n  overflow: hidden;\n  color: #283593;\n}\n\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(" + __webpack_require__(619) + ") format('woff2');\n}\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n}\n\n.mat-dialog-container {\n  padding: 0px !important;\n}\n", ""]);
 
 // exports
 

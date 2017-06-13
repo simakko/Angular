@@ -27,6 +27,7 @@ var AppComponent = (function () {
     function AppComponent(router) {
         this.router = router;
         this.isShadowClassVisible = false;
+        this.isHorizontalScrollbarVisible = true;
         this.user = { id: 1, userName: "Local", password: "Password", email: "local@email.com" };
         this.onWindowResize(null);
     }
@@ -35,9 +36,11 @@ var AppComponent = (function () {
         this.sidenavMode = width >= 600 ? 'side' : 'over';
         if (this.sidenavMode == 'over') {
             this.isShadowClassVisible = false;
+            this.isHorizontalScrollbarVisible = true;
         }
         else {
             this.isShadowClassVisible = true;
+            this.isHorizontalScrollbarVisible = false;
         }
     };
     AppComponent.prototype.ngOnInit = function () {
@@ -112,12 +115,17 @@ var ContactDialogComponent = (function () {
     }
     ContactDialogComponent.prototype.ngOnInit = function () {
         if (!this.contact) {
-            this.title = "Add contact";
+            this.title = "ADD CONTACT";
             this.contact = new __WEBPACK_IMPORTED_MODULE_1__contact__["a" /* Contact */]();
         }
     };
     ContactDialogComponent.prototype.saveContact = function () {
-        this.dialog.close(this.contact);
+        if (!this.contact.firstName && !this.contact.lastName && !this.contact.address && !this.contact.city && !this.contact.phoneNumber) {
+            this.dialog.close();
+        }
+        else {
+            this.dialog.close(this.contact);
+        }
     };
     return ContactDialogComponent;
 }());
@@ -1103,7 +1111,6 @@ var LoginComponent = (function () {
     LoginComponent.prototype.signIn = function () {
         var _this = this;
         this.userService.signIn(this.username, this.password).subscribe(function (data) {
-            console.log("data " + data.json());
             _this.app.user = data.json();
             _this.navigateToContactListing();
         }, function (error) {
@@ -1135,7 +1142,7 @@ exports = module.exports = __webpack_require__(19)();
 
 
 // module
-exports.push([module.i, "html{\r\n  color: inherit;\r\n}\r\n\r\n.container{\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  -webkit-backface-visibility: hidden;\r\n          backface-visibility: hidden;\r\n}\r\n\r\n#content{\r\n  position: relative;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.router-container{\r\n  height: calc(100vh - 60px);\r\n  overflow-y: auto;\r\n}\r\n\r\n.md-toolbar{\r\n  height: 50px;\r\n}\r\n\r\n.ca-sidenav{\r\n  width: 200px;\r\n  height: 100%;\r\n  margin: 0;\r\n  padding: 0;\r\n  color: #283593;\r\n  overflow: visible;\r\n}\r\n\r\n #sidenav-img{\r\n   background-image: url(" + __webpack_require__(267) + ");\r\n   position: absolute;\r\n   width: 100%;\r\n   height: 110px;\r\n   margin: 0;\r\n }\r\n\r\n .sidenavHeaderShadow{\r\n   box-shadow: 5px 5px 10px lightgray;\r\n }\r\n\r\n#sidenavHeader{\r\n  position: absolute;\r\n  margin-top: 64px;\r\n  height: 100%;\r\n  width: 200px;\r\n}\r\n\r\nh3{\r\n  margin-top: 5px;\r\n  margin-bottom: 0;\r\n}\r\n\r\np{\r\n  margin-top: 0;\r\n}\r\n\r\n.ca-sidenavUserImg{\r\n  background-image: url(" + __webpack_require__(618) + ");\r\n  background-position: center;\r\n  background-size: 110px;\r\n  width: 70px;\r\n  height: 70px;\r\n  border-radius: 35px;\r\n}\r\n\r\n.userInfo{\r\n  width: 180px;\r\n  height: auto;\r\n  margin-top: -45px;\r\n  padding: 45px 10px 10px 10px;\r\n  background: -webkit-linear-gradient(top,  rgba(63,81,181,0) 0%,rgba(63,81,181,1) 31%,rgba(63,81,181,1) 100%);\r\n  background: linear-gradient(to bottom,  rgba(63,81,181,0) 0%,rgba(63,81,181,1) 31%,rgba(63,81,181,1) 100%);\r\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003f51b5', endColorstr='#3f51b5',GradientType=0 );\r\n  color: white;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "html{\r\n  color: inherit;\r\n}\r\n\r\n.container{\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  -webkit-backface-visibility: hidden;\r\n          backface-visibility: hidden;\r\n}\r\n\r\n#content{\r\n  position: relative;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.router-container{\r\n  height: calc(100vh - 63px);\r\n  overflow-y: auto;\r\n}\r\n\r\n.md-toolbar{\r\n  height: 50px;\r\n}\r\n\r\n.ca-sidenav{\r\n  width: 200px;\r\n  height: 100%;\r\n  margin: 0;\r\n  padding: 0;\r\n  color: #283593;\r\n  overflow: visible;\r\n}\r\n\r\n #sidenav-img{\r\n   background-image: url(" + __webpack_require__(267) + ");\r\n   position: absolute;\r\n   width: 100%;\r\n   height: 110px;\r\n   margin: 0;\r\n }\r\n\r\n .sidenavHeaderShadow{\r\n   box-shadow: 5px 5px 10px lightgray;\r\n }\r\n\r\n .horizontalScrollbar{\r\n   -webkit-overflow-scrolling: touch;\r\n }\r\n\r\n::-webkit-scrollbar {\r\n  width: 0.6vw;\r\n}\r\n\r\n/* Track */\r\n::-webkit-scrollbar-track {\r\n  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);\r\n  border-radius: 10px;\r\n}\r\n\r\n/* Handle */\r\n::-webkit-scrollbar-thumb {\r\n  border-radius: 10px;\r\n  background: rgba(0,0,50,0.1);\r\n  -webkit-box-shadow: inset 0 0 4px rgba(0,0,50,0.2);\r\n}\r\n::-webkit-scrollbar-thumb:window-inactive {\r\n  background: rgba(0,0,50,0.1);\r\n}\r\n\r\n#sidenavHeader{\r\n  position: absolute;\r\n  margin-top: 64px;\r\n  height: 100%;\r\n  width: 200px;\r\n}\r\n\r\nh3{\r\n  margin-top: 5px;\r\n  margin-bottom: 0;\r\n}\r\n\r\np{\r\n  margin-top: 0;\r\n}\r\n\r\n.ca-sidenavUserImg{\r\n  background-image: url(" + __webpack_require__(618) + ");\r\n  background-position: center;\r\n  background-size: 110px;\r\n  width: 70px;\r\n  height: 70px;\r\n  border-radius: 35px;\r\n}\r\n\r\n.userInfo{\r\n  width: 180px;\r\n  height: auto;\r\n  margin-top: -45px;\r\n  padding: 45px 10px 10px 10px;\r\n  background: -webkit-linear-gradient(top,  rgba(63,81,181,0) 0%,rgba(63,81,181,1) 31%,rgba(63,81,181,1) 100%);\r\n  background: linear-gradient(to bottom,  rgba(63,81,181,0) 0%,rgba(63,81,181,1) 31%,rgba(63,81,181,1) 100%);\r\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#003f51b5', endColorstr='#3f51b5',GradientType=0 );\r\n  color: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1153,7 +1160,7 @@ exports = module.exports = __webpack_require__(19)();
 
 
 // module
-exports.push([module.i, "#buttons{\r\n  width: 100px;\r\n  height: 60px;\r\n\r\n  position: relative;\r\n  top:0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  margin-top: auto;\r\n}\r\n\r\nmd-card-title{\r\n  font-family: \"Gill Sans MT\", \"courier\", \"arial\";\r\n}\r\n", ""]);
+exports.push([module.i, ".button-div {\r\n  width: 110px;\r\n  height: 60px;\r\n\r\n  position: relative;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  margin-top: auto;\r\n}\r\n\r\nbutton{\r\n  margin-right: 10px;\r\n  color: #9E9E9E;\r\n  box-shadow: 0 3px 10px lightgray;\r\n  background: rgb(255,255,255);\r\n}\r\n\r\nmd-card-title{\r\n  padding: 30px 0;\r\n  font-family: \"Gill Sans MT\", \"courier\", \"arial\";\r\n  text-align: center;\r\n  color: white;\r\n  background: #4d7ae4;\r\n}\r\n\r\nmd-card-actions{\r\n  margin: 0;\r\n}\r\n\r\nmd-card-content{\r\n  padding: 0 30px;\r\n}\r\n\r\nmd-input-container{\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1171,7 +1178,7 @@ exports = module.exports = __webpack_require__(19)();
 
 
 // module
-exports.push([module.i, "md-card{\r\n  margin-bottom: 40px;\r\n  color: white;\r\n  padding: 0;\r\n  background: #4d7ae4;\r\n}\r\n\r\n.ca-listItemButtons{\r\n  clear: both;\r\n  margin: 0;\r\n  padding: 0 5%;\r\n  width: 90%;\r\n  background-color: #ffffff;\r\n}\r\n\r\nmd-card-title{\r\n  margin-top: 20px;\r\n  color: #ffffff;\r\n  margin-bottom: auto;\r\n}\r\n\r\n#mapButton{\r\n  float: right;\r\n}\r\n\r\na{\r\n  color: #9E9E9E;\r\n  margin: 5px;\r\n  box-shadow: 0px 2px 1px lightgray;\r\n  background: rgb(255,255,255);\r\n  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 48%,rgba(226,226,226,1) 89%,rgba(226,226,226,1) 89%);\r\n  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 48%,rgba(226,226,226,1) 89%,rgba(226,226,226,1) 89%);\r\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e2e2',GradientType=0 );\r\n\r\n}\r\n\r\n.ca-listItemText{\r\n  margin-left: 10px;\r\n  width: 60%;\r\n  float: left;\r\n}\r\n\r\n.ca-listItemContactIcon {\r\n  font-size: 100px;\r\n}\r\n\r\n.ca-contactIconDiv{\r\nfloat: right;\r\n}\r\nmd-card-content{\r\n  color: gainsboro;\r\n}\r\n", ""]);
+exports.push([module.i, "md-card{\r\n  margin-bottom: 40px;\r\n  color: white;\r\n  padding: 0;\r\n  background: #4d7ae4;\r\n}\r\n\r\n.ca-listItemButtons{\r\n  clear: both;\r\n  margin: 0;\r\n  padding: 0 5%;\r\n  width: 90%;\r\n  background-color: #ffffff;\r\n}\r\n\r\nmd-card-title{\r\n  margin-top: 20px;\r\n  color: #ffffff;\r\n  margin-bottom: auto;\r\n}\r\n\r\n#mapButton{\r\n  float: right;\r\n}\r\n\r\na{\r\n  color: #9E9E9E;\r\n  margin: 5px;\r\n  box-shadow: 0px 3px 10px lightgray;\r\n  background: rgb(255,255,255);\r\n\r\n}\r\n\r\n.ca-listItemText{\r\n  margin-left: 10px;\r\n  width: 60%;\r\n  float: left;\r\n}\r\n\r\n.ca-listItemContactIcon {\r\n  font-size: 100px;\r\n}\r\n\r\n.ca-contactIconDiv{\r\nfloat: right;\r\n}\r\nmd-card-content{\r\n  color: gainsboro;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1225,7 +1232,7 @@ exports = module.exports = __webpack_require__(19)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "iframe{\r\n  height: 65vh;\r\n  width: 65vw;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1256,14 +1263,14 @@ module.exports = module.exports.toString();
 /***/ 363:
 /***/ (function(module, exports) {
 
-module.exports = "<md-sidenav-container class=\"container\">\n  <md-sidenav *ngIf=\"!toolbarDisabled\" class=\"ca-sidenav\" name=\"sidenav\" #sidenav [mode]=\"sidenavMode\"\n              [opened]=\"sidenavMode=='side'\">\n    <div id=\"sidenav-img\"></div>\n    <div id=\"sidenavHeader\" [ngClass]=\"{'sidenavHeaderShadow': isShadowClassVisible}\">\n      <div class=\"userInfo\">\n        <div class=\"ca-sidenavUserImg\"></div>\n        <h3>{{user.userName}}</h3>\n      <p>{{user.email}}</p></div>\n    </div>\n    <button vibration (click)=\"sidenavToggle()\" color=\"primary\"></button>\n  </md-sidenav>\n  <div id=\"content\">\n    <md-toolbar *ngIf=\"!toolbarDisabled\" class=\"mat-elevation-z5\" color=\"primary\">\n      <button vibration md-fab (click)=\"sidenavToggle()\" color=\"primary\">\n        <md-icon>menu</md-icon>\n      </button>\n    </md-toolbar>\n    <div class=\"router-container\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</md-sidenav-container>\n"
+module.exports = "<md-sidenav-container class=\"container\">\n  <md-sidenav *ngIf=\"!toolbarDisabled\" class=\"ca-sidenav\" name=\"sidenav\" #sidenav [mode]=\"sidenavMode\"\n              [opened]=\"sidenavMode=='side'\">\n    <div id=\"sidenav-img\"></div>\n    <div id=\"sidenavHeader\" [ngClass]=\"{'sidenavHeaderShadow': isShadowClassVisible}\">\n      <div class=\"userInfo\">\n        <div class=\"ca-sidenavUserImg\"></div>\n        <h3>{{user.userName}}</h3>\n      <p>{{user.email}}</p></div>\n    </div>\n    <button vibration (click)=\"sidenavToggle()\" color=\"primary\"></button>\n  </md-sidenav>\n  <div id=\"content\">\n    <md-toolbar *ngIf=\"!toolbarDisabled\" class=\"mat-elevation-z5\" color=\"primary\">\n      <button vibration md-fab (click)=\"sidenavToggle()\" color=\"primary\">\n        <md-icon>menu</md-icon>\n      </button>\n    </md-toolbar>\n    <div class=\"router-container\" [ngClass]=\"{'horizontalScrollbar' : isHorizontalScrollbarVisible}\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</md-sidenav-container>\n"
 
 /***/ }),
 
 /***/ 364:
 /***/ (function(module, exports) {
 
-module.exports = "<md-card-title>{{title}}</md-card-title>\n<md-card-content>\n  <md-input-container>\n    <label>Firstname</label>\n    <input mdInput type=\"text\" id=\"firstnameInput\" required [(ngModel)]=\"contact.firstName\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>Lastname</label>\n    <input mdInput type=\"text\" id=\"lastnameInput\" required [(ngModel)]=\"contact.lastName\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>Address</label>\n    <input mdInput type=\"text\" id=\"addressInput\" required [(ngModel)]=\"contact.address\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>City</label>\n    <input mdInput type=\"text\" id=\"cityInput\" required [(ngModel)]=\"contact.city\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>Phonenumber</label>\n    <input mdInput type=\"text\" id=\"phonenumberInput\" required [(ngModel)]=\"contact.phoneNumber\">\n  </md-input-container>\n  <br>\n</md-card-content>\n<md-card-actions>\n  <div id=\"buttons\">\n    <button md-mini-fab vibration color=\"primary\" (click)=\"saveContact()\">\n      <md-icon class=\"md-18\">check</md-icon>\n    </button>\n    <button md-mini-fab vibration color=\"accent\" md-dialog-close>\n      <md-icon class=\"md-18\">clear</md-icon>\n    </button>\n  </div>\n</md-card-actions>\n"
+module.exports = "<md-card-title>{{title}}</md-card-title>\n<md-card-content>\n  <md-input-container>\n    <label>Firstname</label>\n    <input mdInput type=\"text\" id=\"firstnameInput\" required [(ngModel)]=\"contact.firstName\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>Lastname</label>\n    <input mdInput type=\"text\" id=\"lastnameInput\" required [(ngModel)]=\"contact.lastName\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>Address</label>\n    <input mdInput type=\"text\" id=\"addressInput\" required [(ngModel)]=\"contact.address\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>City</label>\n    <input mdInput type=\"text\" id=\"cityInput\" required [(ngModel)]=\"contact.city\">\n  </md-input-container>\n  <br>\n  <md-input-container>\n    <label>Phonenumber</label>\n    <input mdInput type=\"text\" id=\"phonenumberInput\" required [(ngModel)]=\"contact.phoneNumber\">\n  </md-input-container>\n  <br>\n</md-card-content>\n<md-card-actions>\n  <div class=\"button-div\">\n    <button md-mini-fab vibration (click)=\"saveContact()\">\n      <md-icon class=\"md-18\">check</md-icon>\n    </button>\n    <button md-mini-fab vibration md-dialog-close>\n      <md-icon class=\"md-18\">clear</md-icon>\n    </button>\n  </div>\n</md-card-actions>\n"
 
 /***/ }),
 
@@ -1284,14 +1291,14 @@ module.exports = "<div class=\"ca-listContainer\" *ngFor=\"let contact of contac
 /***/ 367:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div fxLayout=\"column\" fxLayoutAlign=\"center\" fxFlex.gt-lg=\"40%\" fxFlex=\"100\" fxFlexOffset.gt-sm=\"30%\"\n       fxFlexOffset.sm=\"14%\">\n    <app-contact-list\n      [contacts]=\"contacts\"\n      (editContact)=\"contactEdit($event)\"\n      (removeContact)=\"contactRemove($event)\"\n      (showContactOnMap)=\"contactShowOnMap($event)\"\n    ></app-contact-list>\n<!--    <div class=\"gradientBottom\"></div>-->\n    <md-card-title-group>\n      <a md-fab vibration routerLink=\".\" (click)=\"addContact()\" color=\"primary\">\n        <md-icon >add</md-icon>\n      </a>\n    </md-card-title-group>\n  </div>\n  <div fxLayout=\"column\" fxFlex.gt-lg=\"40%\" fxFlex.gt-sm=\"30%\" fxFlex.sm=\"14%\" fxFlex=\"0\"></div>\n</div>\n"
+module.exports = "<div>\n  <div fxLayout=\"column\" fxLayoutAlign=\"center\" fxFlex.gt-lg=\"40%\" fxFlex=\"100\" fxFlexOffset.gt-sm=\"30%\"\n       fxFlexOffset.sm=\"14%\">\n    <app-contact-list\n      [contacts]=\"contacts\"\n      (editContact)=\"contactEdit($event)\"\n      (removeContact)=\"contactRemove($event)\"\n      (showContactOnMap)=\"contactShowOnMap($event)\"\n    ></app-contact-list>\n    <md-card-title-group>\n      <a md-fab vibration routerLink=\".\" (click)=\"addContact()\" color=\"primary\">\n        <md-icon >add</md-icon>\n      </a>\n    </md-card-title-group>\n  </div>\n  <div fxLayout=\"column\" fxFlex.gt-lg=\"40%\" fxFlex.gt-sm=\"30%\" fxFlex.sm=\"14%\" fxFlex=\"0\"></div>\n</div>\n"
 
 /***/ }),
 
 /***/ 368:
 /***/ (function(module, exports) {
 
-module.exports = "<div md-dialog-content>\n  <iframe [src]=\"sanitizer.bypassSecurityTrustResourceUrl(this.address)\" width=\"640\" height=\"360\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n</div>\n\n"
+module.exports = "<div class=\"mapFrame\">\n  <iframe [src]=\"sanitizer.bypassSecurityTrustResourceUrl(this.address)\" frameborder=\"0\" align=\"middle\" scrolling=\"auto\" allowfullscreen></iframe>\n</div>\n\n"
 
 /***/ }),
 
