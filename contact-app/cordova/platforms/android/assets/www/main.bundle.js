@@ -111,7 +111,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ContactDialogComponent = (function () {
     function ContactDialogComponent(dialog) {
         this.dialog = dialog;
-        this.title = "Edit contact";
+        this.title = "EDIT CONTACT";
     }
     ContactDialogComponent.prototype.ngOnInit = function () {
         if (!this.contact) {
@@ -1232,7 +1232,7 @@ exports = module.exports = __webpack_require__(19)();
 
 
 // module
-exports.push([module.i, "iframe{\r\n  height: 65vh;\r\n  width: 65vw;\r\n}\r\n", ""]);
+exports.push([module.i, "iframe{\r\n  padding: 10px;\r\n  height: 60vh;\r\n  width: 70vw;\r\n}\r\n", ""]);
 
 // exports
 

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContactsApp.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize("Bearer")]
+    //[Authorize("Bearer")]
     public class ContactsController : Controller
     {
         private readonly IContactService _iContactService;
